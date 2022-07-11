@@ -1,30 +1,49 @@
-SELECT albums_db FROM DATABASES
-SELECT albums_db;
-DATABASE();
-USE albums_db;
-SELECT * FROM albums_db;
-SELECT albums FROM albums_db;
-USE albums;
-SHOW TABLES;
-SELECT * FROM albums LIMIT 5;
-SELECT * FROM albums;
-DESCRIBE albums;
-SELECT release_date FROM albums DESCENDING;
-SELECT * FROM albums WHERE release_date BETWEEN 1990 AND 2000;
-SELECT name FROM albums;
-SELECT artist FROM albums;
-SELECT * FROM albums WHERE artist = 'pink floyd';
-SELECT * FROM albums WHERE name = 'Sgt. peppers lonely hearts club';
-SELECT artist FROM albums;
-SELECT * FROM albums WHERE artist = 'Nirvana';
-SELECT * FROM albums;
-DESCRIBE albums;
-SELECT artist FROM albums;
-SELECT release_date FROM albums DESCENDING;
-SELECT artist FROM albums WHERE  artist  = 'The Beatles';
-SELECT release_date FROM albums WHERE sales < 20;
-USE albums_db;
-SELECT * FROM albums WHERE sales >= 20;
-SELECT * FROM albums WHERE genre = 'rock';
-SELECT * FROM albums WHERE name = 'Nevermind';
-SELECT * FROM albums ORDER BY artist;
+use albums_db;
+show tables;
+
+-- # 3 a) 31 rows
+select * 
+from albums;
+
+-- # 3 b) 23 artists
+select distinct artist
+from albums;
+
+-- # 3 c) id
+describe albums;
+
+-- # 3 d) 1967 and 2011
+select min(release_date), max(release_date)
+from albums;
+
+-- # 4 a) the Dark side of the moon and The Wall
+select name 
+from albums 
+where artist = 'Pink Floyd';
+
+-- # 4 b) 1967
+select release_date
+from albums 
+where name = "Sgt. Pepper's Lonely Hearts Club Band";
+
+-- # 4 c) Grunge, alternative rock
+select genre
+from albums 
+where name = 'Nevermind';
+
+-- # 4 d)
+select name 
+from albums 
+where release_date < '2000' 
+and release_date >= '1990';
+
+-- # 5 e)
+select name, sales
+from albums
+where sales < 20;
+
+-- # 5 f) Because they are not valued as 'rock'
+select name, genre
+from albums 
+where genre = 'rock';
+
